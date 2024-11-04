@@ -2,8 +2,7 @@ import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 
 const s3 = new S3Client({ region: 'ap-south-1' });
 export const handler = async (event) => {
-  const bucketName = "assignement-1";  // Replace with your bucket name
-  
+  const bucketName = "assignement-1";  
   try {
     if (!event.body) {
       throw new Error("Request body is missing");
@@ -11,7 +10,7 @@ export const handler = async (event) => {
 
     const jsonData = JSON.parse(event.body);
 
-    // Generate a unique file name using timestamp and random number
+    
     const fileName = `file_${Date.now()}_${Math.floor(Math.random() * 10000)}.json`;
 
     const putCommand = new PutObjectCommand({
